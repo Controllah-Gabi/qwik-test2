@@ -1,0 +1,3 @@
+**Note 1:** This `/api` directory should not be confused with the `src/pages/api`. The one inside the pages router is for building API's with Next.js. Read more [here](https://nextjs.org/docs/pages/building-your-application/routing/api-routes).
+
+**Note 2:** Note: I'd highly suggest writing documentation for your APIs. It would be easier to manage and would help a lot to fellow engineers who would work on this project in the future. That is just one of the many keys to establishing an extendable code base.
