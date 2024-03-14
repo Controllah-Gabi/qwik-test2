@@ -2,7 +2,7 @@
 import { qwikify$ } from '@builder.io/qwik-react';
 import React, { useContext, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import styles from './styles/Home.module.scss';
+import styles from '../styles/Home.module.scss';
 // import { WhoWeAre } from './components/WhoWeAre';
 import GridRowWith10ColumnsSkeleton from './components/Grid/GridRowWith10ColumnsSkeleton';
 import { SkeletonBanner } from './components/Banner/components/SkeletonBanner';
@@ -53,7 +53,7 @@ const Home: React.FC = () => {
   const [shouldWeLoadBlogPosts, setShouldLoadBlogPosts] = useState(false);
 
   //   const mobile = useContext(IsMobileContext);
-  const mobile = true;
+  const mobile = false;
 
   useEffect(() => {
     setShouldLoadBanner(true);
@@ -92,7 +92,7 @@ const Home: React.FC = () => {
 
   return (
     <div className={styles['home']}>
-      {shouldLoadBanner && !mobile ? <Banner /> : <MobileBanner />}
+      <Banner />
 
       {shouldLoadRecommended && <Recommended />}
 

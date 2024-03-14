@@ -6,10 +6,10 @@ import cx from 'classnames';
 
 import Search from './Search';
 
-import bennettsLogo from '/assets/bennettsLogo.svg';
-import userIcon from '/assets/userIcon.svg';
-import searchIcon from '/assets/searchIcon.svg';
-import burgerMenuIcon from '/assets/burgerMenuIcon.svg';
+import bennettsLogo from '/public/assets/bennettsLogo.svg';
+import userIcon from '/public/assets/userIcon.svg';
+import searchIcon from '/public/assets/searchIcon.svg';
+import burgerMenuIcon from '/public/assets/burgerMenuIcon.svg';
 
 import styles from '../styles/navbar.module.scss';
 import {

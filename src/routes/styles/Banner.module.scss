@@ -1,0 +1,138 @@
+.banner {
+  margin: -10px 0px 50px;
+  position: relative;
+  height: 100%;
+  color: white;
+  flex-direction: row;
+  z-index: 1;
+
+  @media (max-width: 960px) {
+    position: relative;
+    margin: 0px -7vw;
+  }
+
+  &__slideshow {
+    margin: 0 auto;
+    margin-top: -12px;
+    overflow: hidden;
+    &__slider {
+      white-space: nowrap;
+      transition: ease 1000ms;
+      max-width: 100%;
+      width: 100%;
+      @media (max-width: 960px) {
+        &__img {
+          width: 100%;
+          margin-top: 12px;
+        }
+      }
+
+      &__slide {
+        display: inline-block;
+        height: 40px;
+        width: 100%;
+        text-align: center;
+        padding-top: 13px;
+      }
+      &__dots {
+        text-align: center;
+        padding-bottom: 20px;
+        @media (min-width: 961px) {
+          display: none;
+        }
+
+        &__dot {
+          display: inline-block;
+          height: 6px;
+          width: 6px;
+          border-radius: 5%;
+          cursor: pointer;
+          background: #dfdfdf;
+          margin-left: 10px;
+
+          &--active {
+            background-color: #797979;
+          }
+          :first-of-type {
+            margin-left: 0px;
+          }
+        }
+      }
+    }
+    &__navigation {
+      @media (max-width: 960px) {
+        display: none;
+      }
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      bottom: 0;
+      color: #101010;
+      font-family: 'Segoe UI', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      z-index: 3;
+      width: 17%;
+      margin: 15px 0;
+      &__directions {
+        cursor: pointer;
+        &__image {
+          width: 60%;
+          &__chevron {
+            width: 14px;
+            height: auto;
+          }
+        }
+        &__previous {
+          margin-right: 2em;
+        }
+        &__next {
+          margin-left: 2em;
+        }
+      }
+      &__info {
+        align-items: baseline;
+        display: flex;
+        justify-content: center;
+        width: 80px;
+        &__slide-count {
+          font-size: 1.5rem;
+          margin-right: 0.25em;
+        }
+      }
+    }
+  }
+}
+
+.mobile {
+  display: none !important;
+  @media (max-width: 960px) {
+    display: block !important;
+  }
+}
+
+.desktop {
+  @media (max-width: 960px) {
+    display: none !important;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(199, 26%, 81%);
+  }
+
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+.skeleton {
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+  width: 1500px;
+  height: 475px;
+  @media (max-width: 960px) {
+    height: 318px;
+  }
+}

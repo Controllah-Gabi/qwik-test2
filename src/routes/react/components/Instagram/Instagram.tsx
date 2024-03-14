@@ -1,17 +1,13 @@
 /** @jsxImportSource react */
-import React, { useContext, useRef, useState } from 'react';
-import Image from 'next/image';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { AiOutlineInstagram, AiOutlineShopping } from 'react-icons/ai';
-import { useGetInstagram } from '@/api/homepage/instagram';
-import GridRowWith10ColumnsSkeleton from '../../Grid/GridRowWith10ColumnsSkeleton';
-import { useClickedInstagramPost } from '@/hooks/useModalClicked';
-import { ScreenLockContext } from '@/contexts/ScreenLockContext';
-import { ScrollLeftRightButtons } from './ScrollButtons';
-import styles from '@/components/Grid/styles/Grid.module.scss';
-import { Product } from '@/api/product/products';
-import dynamic from 'next/dynamic';
-import { ModalLoading } from '@/components/Loading/ModalLoading';
+import { getInstagram, useGetInstagram } from '../../api/homepage/instagram';
+import GridRowWith10ColumnsSkeleton from '../Grid/GridRowWith10ColumnsSkeleton';
+
+import { ScrollLeftRightButtons } from '../ScrollButtons';
+import styles from '../../../styles/Grid.module.scss';
+import { Product } from '../../api/product/products';
 
 interface PopularProps {
   heading: string;
@@ -23,33 +19,35 @@ interface InstagramDataItem {
   title: string;
 }
 
-const InstagramModal = dynamic(
-  () => import('@/components/Modal/InstagramModal'),
-  {
-    loading: () => <ModalLoading />,
-  },
-);
+// const InstagramModal = dynamic(
+//   () => import('@/components/Modal/InstagramModal'),
+//   {
+//     loading: () => <ModalLoading />,
+//   },
+// );
 
 const Popular: React.FC<PopularProps> = ({ heading }) => {
-  const { data, isLoading, refetch } = useGetInstagram();
   const [payload, setPayload] = useState<InstagramDataItem | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isImageLoading, setIsImageLoading] = useState(true);
-  const { dispatch, isInstagramPostOpen, instagramPostClicked } =
-    useClickedInstagramPost();
-  const { lockScreen } = useContext(ScreenLockContext);
-  refetch();
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getInstagram();
+      setData(response);
+    };
+    fetchData();
+  }, []);
   const handlePostClicked = (item: InstagramDataItem) => {
     // lockScreen();
-    dispatch(instagramPostClicked);
+    // dispatch(instagramPostClicked);
     setPayload(item);
   };
 
-  if (isLoading || !data) return <GridRowWith10ColumnsSkeleton />;
-
   return (
     <>
-      {isInstagramPostOpen && payload && <InstagramModal payload={payload} />}
+      {/* {isInstagramPostOpen && payload && <InstagramModal payload={payload} />} */}
       <section>
         <div className={styles['product-row__container']}>
           <h2 className={styles['product-row__container__title']}>{heading}</h2>
@@ -65,7 +63,7 @@ const Popular: React.FC<PopularProps> = ({ heading }) => {
           )}
           ref={scrollRef}
         >
-          {data.map((item, id) => (
+          {data.map((item: any, id: any) => (
             <div
               key={id}
               data-cy="product-card"
@@ -78,8 +76,7 @@ const Popular: React.FC<PopularProps> = ({ heading }) => {
                 }
               >
                 <div>
-                  <Image
-                    quality={20}
+                  <img
                     className={cx(
                       styles[
                         'product-row__container__vessel__card__container__image'
@@ -88,7 +85,7 @@ const Popular: React.FC<PopularProps> = ({ heading }) => {
                         ? styles['opacity-0']
                         : styles['transition-op'],
                     )}
-                    onLoadingComplete={() => setIsImageLoading(false)}
+                    onLoad={() => setIsImageLoading(false)}
                     height={264}
                     width={264}
                     src={item.img}

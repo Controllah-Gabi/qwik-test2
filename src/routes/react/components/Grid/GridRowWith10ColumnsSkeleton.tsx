@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
 import React from 'react';
 import SkeletonProductCard from '../Cards/SkeletonProductCard';
-import styles from './styles/Grid.module.scss';
+import styles from '../../../styles/Grid.module.scss';
 
 interface GridRowWith10ColumnsSkeletonProps {
   heading?: string;

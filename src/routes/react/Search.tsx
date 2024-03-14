@@ -1,7 +1,6 @@
 /** @jsxImportSource react */
-import Image from 'next/image';
 // import { useSearchMenuClicked } from '@/hooks/useModalClicked';
-import searchIcon from '/assets/searchIcon.svg';
+import searchIcon from '/public/assets/searchIcon.svg';
 import styles from '../styles/navbar.module.scss';
 
 const Search: React.FC = () => {

@@ -1,9 +1,7 @@
 /** @jsxImportSource react */
-import Image from 'next/image';
 import greenCircleIcon from '/public/assets/greenCircleIcon.svg';
 import redCircleIcon from '/public/assets/redCircleIcon.svg';
-import styles from './styles/Card.module.scss';
-import { useRouter, NextRouter } from 'next/router';
+import styles from '../../../styles/Card.module.scss';
 import cx from 'classnames';
 import React, { useState, FC } from 'react';
 import { displayFloatPrice } from '../../../../utils/displayFloatPrice';
@@ -31,30 +29,29 @@ const ProductCard: FC<ProductCardProps> = ({
   coloursShown,
   index,
 }) => {
-  const router: NextRouter = useRouter();
-  const [isImageLoading, setIsImageLoading] = useState(true);
+  const [isimgLoading, setIsimgLoading] = useState(true);
   return (
     <article className={styles['product-card']}>
       <div className={styles['product-card__container']}>
-        <div className={styles['product-card__container__image']}>
+        <div className={styles['product-card__container__img']}>
           <img
-            {...(index! < 4 && { priority: true })}
+            {...(index! < 4 && { priority: 'true' })}
             key={index}
             width={290}
             height={360}
             src={src}
             alt={alt}
             className={cx(
-              isImageLoading ? styles['opacity-0'] : styles['transition-op'],
+              isimgLoading ? styles['opacity-0'] : styles['transition-op'],
             )}
-            // onLoadingComplete={() => setIsImageLoading(false)}
+            onLoad={() => setIsimgLoading(false)}
           />
         </div>
       </div>
       <div
         className={cx(styles['product-card__container__info'], {
           [styles['product-card__container__info--pd']]:
-            router.route === '/[products]',
+            window.location.pathname === '/[products]',
         })}
       >
         <div className={styles['product-card__container__info__brand']}>
@@ -130,13 +127,14 @@ const ProductCard: FC<ProductCardProps> = ({
                     </span>{' '}
                   </>
                 )}
-                <Image
-                  quality={20}
+                <img
                   src={inStock ? greenCircleIcon : redCircleIcon}
                   alt={inStock ? 'In Stock' : 'Sold Out'}
+                  height={15}
+                  width={15}
                   className={
                     styles[
-                      'product-card__container__info__availability__container__text__image'
+                      'product-card__container__info__availability__container__text__img'
                     ]
                   }
                 />{' '}

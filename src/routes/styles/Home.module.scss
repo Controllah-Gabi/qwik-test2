@@ -1,0 +1,21 @@
+.home {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.who-we-are {
+  text-align: center;
+  font-size: 14px;
+  padding: 40px;
+}
+
+.blog-posts {
+  text-align: center;
+  padding: 20px;
+  font-weight: 600;
+  &__link {
+    padding: 15px;
+    border: 2px solid black;
+  }
+}

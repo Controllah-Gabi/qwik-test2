@@ -1,0 +1,99 @@
+.scroll-button {
+  &__left {
+    z-index: 2;
+    position: absolute;
+    height: 500px;
+    @media (max-width: 960px) {
+      display: none !important;
+    }
+    &__button {
+      margin: auto 0px;
+      display: block;
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+      background-color: rgb(182 182 182 / 56%);
+      border-radius: 20px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      position: absolute;
+      top: calc(38% - 20px);
+      cursor: pointer;
+      left: -11px;
+    }
+  }
+  &__right {
+    @media (max-width: 960px) {
+      display: none !important;
+    }
+    position: absolute;
+    height: 500px;
+    width: min(1520px, 96vw);
+    &__product-sec {
+      width: min(1308px, 96vw);
+    }
+    &__button {
+      margin: auto 0px;
+      display: block;
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+      background-color: rgb(182 182 182 / 56%);
+      border-radius: 20px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      position: absolute;
+      top: calc(38% - 20px);
+      cursor: pointer;
+      right: -11px;
+      z-index: 2;
+    }
+  }
+}
+
+.scroll-buttons {
+  &__left {
+    z-index: 2;
+    position: relative;
+    &__button {
+      margin: auto 0px;
+      display: block;
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+      background-color: #fff;
+      border-radius: 20px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      position: absolute;
+      top: calc(38% - 20px);
+      cursor: pointer;
+      left: -11px;
+    }
+  }
+  &__right {
+    z-index: 2;
+    position: relative;
+    width: 75px;
+    &__button {
+      margin: auto 0px;
+      display: block;
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+      background-color: #fff;
+      border-radius: 20px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      position: absolute;
+      top: calc(38% - 20px);
+      cursor: pointer;
+      right: -11px;
+      z-index: 2;
+    }
+  }
+}

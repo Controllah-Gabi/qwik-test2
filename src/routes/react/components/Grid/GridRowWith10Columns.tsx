@@ -1,30 +1,26 @@
 /** @jsxImportSource react */
 import React, { useRef } from 'react';
 import Link from 'next/link';
-import ProductCard from '@/components/Cards/ProductCard';
-import {
-  ScrollLeftButton,
-  ScrollRightButton,
-} from '../Home/components/ScrollButtons';
+import ProductCard from '../Cards/ProductCard';
+import { ScrollLeftButton, ScrollRightButton } from '../ScrollButtons';
 import UpAndComingProductCard from '../Cards/UpAndComingProductCard';
-import styles from './styles/Grid.module.scss';
-import { useRouter } from 'next/router';
-import { generateProductDescription } from '@/utils/generateProductDescription';
+import styles from '../../../styles/Grid.module.scss';
+import { generateProductDescription } from '../../../../utils/generateProductDescription';
 
 interface ProductItem {
-  _id?: string;
-  productName?: string;
-  sale?: boolean;
-  coloursShown?: string;
-  cheapestPrice?: number;
-  beforePrice?: number;
-  inStock?: boolean;
-  coverImage?: string;
-  comingSoon?: boolean;
-  comingSoonDate?: string;
-  comingSoonTime?: string;
-  brand?: string;
-  colourShown?: string;
+  _id: string;
+  productName: string;
+  sale: boolean;
+  coloursShown: string;
+  cheapestPrice: number;
+  beforePrice: number;
+  inStock: boolean;
+  coverImage: string;
+  comingSoon: boolean;
+  comingSoonDate: string;
+  comingSoonTime: string;
+  brand: string;
+  colourShown: string;
 }
 
 interface GridRowWith10ColumnsProps {
@@ -41,6 +37,7 @@ const GridRowWith10Columns = ({
   data,
 }: GridRowWith10ColumnsProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  console.log(data, heading);
   return (
     <section>
       <div className={styles['product-row__container']}>

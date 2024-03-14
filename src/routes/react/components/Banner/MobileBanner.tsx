@@ -1,17 +1,17 @@
 /** @jsxImportSource react */
-import React, { useRef, useState } from 'react';
-import { dehydrate, QueryClient } from '@tanstack/react-query';
-import Image from 'next/image';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { useRef, useState } from 'react';
+import Navigation from 'swiper';
+import Pagination from 'swiper';
+import Scrollbar from 'swiper';
+import A11y from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import styles from './styles/Banner.module.scss';
+import styles from '../../../styles/Banner.module.scss';
 import cx from 'classnames';
 import chevronLeftIcon from '/public/assets/chevronLeftIcon.svg';
 import chevronRightIcon from '/public/assets/chevronRightIcon.svg';
 import { SkeletonBanner } from './components/SkeletonBanner';
-import { useGetBanners } from '@/api/homepage/banner';
-import { GetStaticProps } from 'next';
+import { useGetBanners } from '../../api/homepage/banner';
 import Link from 'next/link';
 
 const MobileBanner = () => {
@@ -44,11 +44,11 @@ const MobileBanner = () => {
           {isLoading ? (
             <SkeletonBanner />
           ) : (
-            data.map((news, index) => (
+            data!.map((news, index) => (
               <SwiperSlide key={index}>
                 <Link href={`/${news.itemHref}`}>
-                  <Image
-                    {...(index === 0 && { priority: true })}
+                  <img
+                    {...(index === 0 && { priority: 'true' })}
                     height={202}
                     width={320}
                     className={styles['banner__slideshow__slider__img']}
@@ -63,7 +63,7 @@ const MobileBanner = () => {
         <div className={styles['banner__slideshow__slider__dots']}>
           {isLoading
             ? null
-            : data.map((_, idx) => (
+            : data!.map((_, idx) => (
                 <div
                   key={idx}
                   onClick={() => {
@@ -92,7 +92,7 @@ const MobileBanner = () => {
               onClick={() => swiperRefMobile.current.slidePrev()}
               aria-label="Previous Slide"
             >
-              <Image
+              <img
                 src={chevronLeftIcon}
                 id="chevron-left"
                 aria-labelledby="left-chevron"
@@ -101,7 +101,7 @@ const MobileBanner = () => {
                 alt="left chevron"
                 className={
                   styles[
-                    'banner__slideshow__navigation__directions__image__chevron'
+                    'banner__slideshow__navigation__directions__img__chevron'
                   ]
                 }
               />
@@ -115,7 +115,7 @@ const MobileBanner = () => {
             >
               0{index + 1}
             </div>
-            <div>/ 0{isLoading ? null : data.length}</div>
+            <div>/ 0{isLoading ? null : data!.length}</div>
           </div>
           <div
             className={cx(
@@ -127,7 +127,7 @@ const MobileBanner = () => {
               onClick={() => swiperRefMobile.current.slideNext()}
               aria-label="Next Slide"
             >
-              <Image
+              <img
                 src={chevronRightIcon}
                 id="chevron-right"
                 aria-labelledby="right-chevron"
@@ -136,7 +136,7 @@ const MobileBanner = () => {
                 alt="right chevron"
                 className={
                   styles[
-                    'banner__slideshow__navigation__directions__image__chevron'
+                    'banner__slideshow__navigation__directions__img__chevron'
                   ]
                 }
               />
@@ -149,13 +149,3 @@ const MobileBanner = () => {
 };
 
 export default MobileBanner;
-//@ts-ignore
-export const getStaticProps: GetStaticProps = async () => {
-  const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(['banners'], () => useGetBanners());
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-};

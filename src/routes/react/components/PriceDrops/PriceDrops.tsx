@@ -1,40 +1,36 @@
 /** @jsxImportSource react */
-import { dehydrate, QueryClient } from '@tanstack/react-query';
-import GridRowWith10Columns from '@/components/Grid/GridRowWith10Columns';
-import GridRowWith10ColumnsSkeleton from '@/components/Grid/GridRowWith10ColumnsSkeleton';
+import GridRowWith10Columns from '../Grid/GridRowWith10Columns';
+import GridRowWith10ColumnsSkeleton from '../Grid/GridRowWith10ColumnsSkeleton';
 import {
   getPriceDrops,
   useGetPriceDrops,
-} from '@/api/homepage/homepagePriceDrops';
-import { GetStaticProps } from 'next';
-import { useGetGender } from '@/hooks/useGetGender';
+} from '../../api/homepage/homepagePriceDrops';
+import { useEffect, useState } from 'react';
+// import { useGetGender } from '@/hooks/useGetGender';
 
 const PriceDrops: React.FC = () => {
-  const { data, isLoading, refetch } = useGetPriceDrops();
-  refetch();
-  const { selectedGender } = useGetGender();
-  return isLoading ? (
-    <GridRowWith10ColumnsSkeleton />
-  ) : (
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getPriceDrops();
+      setData(response);
+    };
+    fetchData();
+  }, []);
+  // const { selectedGender } = useGetGender();
+  if (data[0] === undefined) {
+    return <GridRowWith10ColumnsSkeleton heading="Price Drops" />;
+  }
+
+  return (
     <GridRowWith10Columns
       heading="Price Drops"
       data={data}
       more="View All"
-      href={`/sale?gender=${selectedGender}`}
+      href={`/sale?gender=men`}
     />
   );
 };
 
 export default PriceDrops;
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(['Price drops'], () => getPriceDrops());
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-};

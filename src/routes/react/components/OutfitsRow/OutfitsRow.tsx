@@ -1,30 +1,34 @@
 /** @jsxImportSource react */
-import {
-  getOutfitsHomePage,
-  useGetOutfitsHomePage,
-} from '@/api/outfit/outfits';
-import { dehydrate, QueryClient } from '@tanstack/react-query';
-import GridRowWith10ColumnsSkeleton from '../../Grid/GridRowWith10ColumnsSkeleton';
+import { getOutfits, useGetOutfitsHomePage } from '../../api/outfit/outfits';
+
+import GridRowWith10ColumnsSkeleton from '../Grid/GridRowWith10ColumnsSkeleton';
 import Link from 'next/link';
-import OutfitCard from '../../Cards/OutfitCard';
-import styles from '@/components/Grid/styles/Grid.module.scss';
-import { ScrollLeftRightButtons } from './ScrollButtons';
-import React, { useRef } from 'react';
-import { useGetGender } from '@/hooks/useGetGender';
+import OutfitCard from '../Cards/OutfitCard';
+import styles from '../../../styles/Grid.module.scss';
+import { ScrollLeftRightButtons } from '../ScrollButtons';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface OutfitsRowProps {
   heading: string;
 }
 
 const OutfitsRow: React.FC<OutfitsRowProps> = ({ heading }) => {
-  const { data: outfits, isLoading, refetch } = useGetOutfitsHomePage();
-  refetch();
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const { selectedGender } = useGetGender();
+  const [data, setData] = useState<any>([]);
 
-  return isLoading ? (
-    <GridRowWith10ColumnsSkeleton />
-  ) : (
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getOutfits();
+      setData(response);
+    };
+    fetchData();
+  }, []);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  if (data[0] === undefined) {
+    return <GridRowWith10ColumnsSkeleton heading="Outfits" />;
+  }
+
+  return (
     <section>
       <div className={styles['product-row__container']}>
         <h2 className={styles['product-row__container__title']}>{heading}</h2>
@@ -33,7 +37,7 @@ const OutfitsRow: React.FC<OutfitsRowProps> = ({ heading }) => {
             <ScrollLeftRightButtons scrollRef={scrollRef} />
           </div>
           <Link
-            href={`/outfits?gender=${selectedGender}`}
+            href={`/outfits?gender=men`}
             className={styles['product-row__container__recommended']}
           >
             View All
@@ -45,7 +49,7 @@ const OutfitsRow: React.FC<OutfitsRowProps> = ({ heading }) => {
         className={styles['product-row__container__vessel']}
         ref={scrollRef}
       >
-        {outfits?.map((item, index) => {
+        {data.outfits?.map((item: any, index: any) => {
           return (
             <Link
               href={`/outfits/${item._id}`}
@@ -72,17 +76,3 @@ const OutfitsRow: React.FC<OutfitsRowProps> = ({ heading }) => {
 };
 
 export default OutfitsRow;
-
-export const getStaticProps = async () => {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(['outfits/homepage'], () =>
-    getOutfitsHomePage(),
-  );
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-};
