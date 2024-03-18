@@ -5,11 +5,10 @@ import {
   getRecommended,
   useGetRecommended,
 } from '../../api/homepage/homepageRecommended';
-import { GetStaticProps, NextPage } from 'next';
 import GridRowWith10Columns from '../../components/Grid/GridRowWith10Columns';
 import { useEffect, useState } from 'react';
 
-const Recommended: NextPage = () => {
+const Recommended = () => {
   const [data, setData] = useState<any>([]);
 
   useEffect(() => {

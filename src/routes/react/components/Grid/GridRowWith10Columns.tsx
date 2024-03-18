@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
 import { useRef } from 'react';
-import Link from 'next/link';
+import a from 'next/link';
 import ProductCard from '../Cards/ProductCard';
 import { ScrollLeftButton, ScrollRightButton } from '../ScrollButtons';
 import UpAndComingProductCard from '../Cards/UpAndComingProductCard';
@@ -43,12 +43,12 @@ const GridRowWith10Columns = ({
       <div className={styles['product-row__container']}>
         <h2 className={styles['product-row__container__title']}>{heading}</h2>
         {href && more && (
-          <Link
+          <a
             href={href}
             className={styles['product-row__container__recommended']}
           >
             {more}
-          </Link>
+          </a>
         )}
       </div>
       <div
@@ -65,7 +65,7 @@ const GridRowWith10Columns = ({
             data-cy="product-card"
             className={styles['product-row__container__vessel__card']}
           >
-            <Link
+            <a
               href={`/products/${item._id}/${generateProductDescription(
                 item.productName,
                 item.coloursShown,
@@ -100,7 +100,7 @@ const GridRowWith10Columns = ({
                   src={item.coverImage}
                 />
               )}
-            </Link>
+            </a>
           </div>
         ))}
         <ScrollRightButton scrollRef={scrollRef} />

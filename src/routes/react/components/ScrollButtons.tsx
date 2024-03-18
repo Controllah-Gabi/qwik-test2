@@ -32,8 +32,7 @@ export const ScrollRightButton: FC<ScrollButtonProps> = ({ scrollRef }) => {
   return (
     <div
       className={cx(styles['scroll-button__right'], {
-        [styles['scroll-button__right__product-sec']]:
-          window.location.pathname === '/products/[id]',
+        [styles['scroll-button__right__product-sec']]: true,
       })}
     >
       <button

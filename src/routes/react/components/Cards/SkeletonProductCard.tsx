@@ -12,8 +12,7 @@ const SkeletonProductCard: FC = () => {
             styles['product-card__container__image__skeleton'],
             styles['skeleton'],
             {
-              [styles['skeleton__mw40']]:
-                window.location.pathname === '/[products]',
+              [styles['skeleton__mw40']]: true,
             },
           )}
         ></div>
@@ -24,8 +23,7 @@ const SkeletonProductCard: FC = () => {
             styles['product-card__container__info__colours'],
             styles['skeleton'],
             {
-              [styles['skeleton__mw40']]:
-                window.location.pathname === '/[products]',
+              [styles['skeleton__mw40']]: true,
             },
           )}
         >
@@ -38,8 +36,7 @@ const SkeletonProductCard: FC = () => {
             styles['product-card__container__info__availability'],
             styles['skeleton'],
             {
-              [styles['skeleton__mw40']]:
-                window.location.pathname === '/[products]',
+              [styles['skeleton__mw40']]: true,
             },
           )}
         >
@@ -51,8 +48,7 @@ const SkeletonProductCard: FC = () => {
                 ],
                 styles['skeleton'],
                 {
-                  [styles['skeleton__mw40']]:
-                    window.location.pathname === '/[products]',
+                  [styles['skeleton__mw40']]: true,
                 },
               )}
             ></div>

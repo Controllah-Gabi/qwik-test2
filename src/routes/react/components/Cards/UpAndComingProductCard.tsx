@@ -28,8 +28,7 @@ const UpAndComingProductCard: FC<UpAndComingProductCardProps> = ({
       </div>
       <div
         className={cx(styles['product-card__container__info'], {
-          [styles['product-card__container__info--pd']]:
-            window.location.pathname === '/[products]',
+          [styles['product-card__container__info--pd']]: true,
         })}
       >
         <div className={styles['product-card__container__info__brand']}>

@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
 
-import Link from 'next/link';
+import a from 'next/link';
 import styles from '../styles/navbar.module.scss';
 import cx from 'classnames';
 import Dropdown from './Dropdown';
@@ -33,7 +33,7 @@ const HeaderItem: FC<HeaderItemProps> = ({
           }
         : {})}
     >
-      <Link
+      <a
         href={`/${item.title.toLowerCase()}?gender=${gender}`}
         aria-label={
           item.title[0].toUpperCase() + item.title.slice(1).toLowerCase()
@@ -44,7 +44,7 @@ const HeaderItem: FC<HeaderItemProps> = ({
         data-cy={`home-desktop__${item.title.toLowerCase().replace(' ', '-')}`}
       >
         {item.title}
-      </Link>
+      </a>
       {dropdownState && dropdownItems && (
         <Dropdown currentItem={dropdownItems} />
       )}

@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
 import { qwikify$ } from '@builder.io/qwik-react';
 import { useState } from 'react';
-import Link from 'next/link';
+import a from 'next/link';
 import cx from 'classnames';
 
 import Search from './Search';
@@ -86,7 +86,7 @@ function Navbar() {
         >
           <ul className={styles['navbar__container__gender']}>
             <li className={styles['navbar__container__gender__item']}>
-              <Link
+              <a
                 href="/"
                 aria-label="Home"
                 data-cy="home-desktop"
@@ -100,20 +100,11 @@ function Navbar() {
                   aria-labelledby="Bennetts--logo"
                   alt="Bennetts logo"
                 />
-              </Link>
+              </a>
             </li>
             <li className={styles['navbar__container__gender__item']}>
-              <Link
+              <a
                 href="/"
-                onClick={() => {
-                  if (typeof window !== 'undefined') {
-                    localStorage.setItem(
-                      'selectedGender',
-                      JSON.stringify('men'),
-                    );
-                  }
-                  setSelectedGender('men');
-                }}
                 aria-label="Men"
                 key="men"
                 data-cy="home-desktop__men"
@@ -122,19 +113,10 @@ function Navbar() {
                 })}
               >
                 MEN
-              </Link>
+              </a>
             </li>
             <li className={styles['navbar__container__gender__item']}>
-              <Link
-                onClick={() => {
-                  if (typeof window !== 'undefined') {
-                    localStorage.setItem(
-                      'selectedGender',
-                      JSON.stringify('women'),
-                    );
-                  }
-                  setSelectedGender('women');
-                }}
+              <a
                 href="/"
                 data-cy="home-desktop__women"
                 aria-label="Women"
@@ -144,7 +126,7 @@ function Navbar() {
                 })}
               >
                 WOMEN
-              </Link>
+              </a>
             </li>
           </ul>
         </section>
@@ -157,7 +139,7 @@ function Navbar() {
           )}
           aria-label="Bennetts logo"
         >
-          <Link
+          <a
             href="/"
             id="home-mobile"
             className={styles['navbar__container__gender__item__link']}
@@ -171,7 +153,7 @@ function Navbar() {
               alt="search icon"
               data-cy="home-mobile__logo"
             />
-          </Link>
+          </a>
         </section>
 
         <section
@@ -223,16 +205,15 @@ function Navbar() {
           )}
         >
           <>
-            {user && (
-              <Link
-                aria-label="User"
-                data-cy="home-mobile__profile"
-                href="/user-home/my-bennetts"
-                className={styles['mobile']}
-              >
-                <span>{initials}</span>
-              </Link>
-            )}
+            <a
+              aria-label="User"
+              data-cy="home-mobile__profile"
+              href="/user-home/my-bennetts"
+              className={styles['mobile']}
+            >
+              <span>{initials}</span>
+            </a>
+
             <section
               className={cx(
                 styles['navbar__container__search'],
@@ -241,8 +222,8 @@ function Navbar() {
             >
               <button
                 onClick={(e) => {
-                  //   lockScreen();
-                  //   dispatchSearch(mobileSearchClicked);
+                  // lockScreen();
+                  // dispatchSearch(mobileSearchClicked);
                 }}
                 type="submit"
                 title="Submit your query."
@@ -273,32 +254,22 @@ function Navbar() {
                 styles['desktop'],
               )}
             >
-              {user ? (
-                <Link
-                  data-cy="home-desktop__profile"
-                  aria-label="User"
-                  href="/user-home/my-bennetts"
+              <div className={cx(styles['desktop'])}>
+                <a
+                  data-cy="home-desktop__user"
+                  aria-label="Login"
+                  href="/login"
                 >
-                  <span>{initials}</span>
-                </Link>
-              ) : (
-                <div className={cx(styles['desktop'])}>
-                  <Link
-                    data-cy="home-desktop__user"
-                    aria-label="Login"
-                    href="/login"
-                  >
-                    <img
-                      width={50}
-                      height={50}
-                      src={userIcon}
-                      id="login"
-                      aria-labelledby="Login--icon"
-                      alt="user icon"
-                    />
-                  </Link>
-                </div>
-              )}
+                  <img
+                    width={50}
+                    height={50}
+                    src={userIcon}
+                    id="login"
+                    aria-labelledby="Login--icon"
+                    alt="user icon"
+                  />
+                </a>
+              </div>
             </section>
           </>
         </section>

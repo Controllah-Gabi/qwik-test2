@@ -6,7 +6,6 @@ import SwiperCore from 'swiper';
 // import Pagination from 'swiper';
 // import Scrollbar from 'swiper';
 // import A11y from 'swiper';
-import { Swiper as SwiperComponent, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import styles from '../../../styles/Banner.module.scss';
 import cx from 'classnames';
@@ -14,7 +13,6 @@ import chevronLeftIcon from '/public/assets/chevronLeftIcon.svg';
 import chevronRightIcon from '/public/assets/chevronRightIcon.svg';
 import { SkeletonBanner } from './components/SkeletonBanner';
 import { useGetBanners, getBanners } from '../../api/homepage/banner';
-import Link from 'next/link';
 
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 const Banner = () => {
@@ -33,26 +31,16 @@ const Banner = () => {
 
   return (
     <section className={styles['banner']}>
-      <SwiperComponent
+      <div
         data-cy="home-desktop__banner__slideshow__slider"
         className={cx(styles['banner__slideshow'], styles['desktop'])}
-        onSwiper={(swiper) => {
-          swiperRefDesktop.current = swiper;
-        }}
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={1}
-        slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        onSlideChange={(e) => setIndex(e.activeIndex)}
       >
         <div
           className={cx(styles['banner__slideshow__slider'], styles['desktop'])}
         >
           {data?.map((news: any, index: any) => (
-            <SwiperSlide key={index}>
-              <Link href={`/${news.itemHref}`}>
+            <div key={index}>
+              <a href={`/${news.itemHref}`}>
                 <img
                   {...(index === 0 && { priority: 'true' })}
                   height={475}
@@ -61,8 +49,8 @@ const Banner = () => {
                   src={news.desktopImg}
                   alt={news.bannerName}
                 />
-              </Link>
-            </SwiperSlide>
+              </a>
+            </div>
           ))}
         </div>
 
@@ -128,7 +116,7 @@ const Banner = () => {
             </button>
           </div>
         </div>
-      </SwiperComponent>
+      </div>
     </section>
   );
 };

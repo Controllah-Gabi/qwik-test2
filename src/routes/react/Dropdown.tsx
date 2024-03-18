@@ -1,7 +1,6 @@
 /** @jsxImportSource react */
 
 import { useState, FC } from 'react';
-import Link from 'next/link';
 import styles from '../styles/navbar.module.scss';
 import cx from 'classnames';
 
@@ -46,7 +45,7 @@ const Dropdown: FC<DropdownProps> = ({ currentItem }) => {
                 ]
               }
             >
-              <Link href={`/${item.path}`}>
+              <a href={`/${item.path}`}>
                 <div
                   className={
                     styles[
@@ -60,7 +59,7 @@ const Dropdown: FC<DropdownProps> = ({ currentItem }) => {
                     item.brand
                   }
                 </div>
-              </Link>
+              </a>
             </li>
             {
               // @ts-ignore
@@ -74,7 +73,7 @@ const Dropdown: FC<DropdownProps> = ({ currentItem }) => {
                     ]
                   }
                 >
-                  <Link href={`/${item.path}`}>
+                  <a href={`/${item.path}`}>
                     <div
                       className={cx(
                         styles[
@@ -90,7 +89,7 @@ const Dropdown: FC<DropdownProps> = ({ currentItem }) => {
                     >
                       {item.title}
                     </div>
-                  </Link>
+                  </a>
                 </li>
               ))
             }
