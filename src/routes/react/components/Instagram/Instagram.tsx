@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import { AiOutlineInstagram, AiOutlineShopping } from 'react-icons/ai';
 import { getInstagram, useGetInstagram } from '../../api/homepage/instagram';
@@ -26,7 +26,7 @@ interface InstagramDataItem {
 //   },
 // );
 
-const Popular: React.FC<PopularProps> = ({ heading }) => {
+const Popular: FC<PopularProps> = ({ heading }) => {
   const [payload, setPayload] = useState<InstagramDataItem | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isImageLoading, setIsImageLoading] = useState(true);

@@ -5,10 +5,10 @@ import {
   getPriceDrops,
   useGetPriceDrops,
 } from '../../api/homepage/homepagePriceDrops';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 // import { useGetGender } from '@/hooks/useGetGender';
 
-const PriceDrops: React.FC = () => {
+const PriceDrops: FC = () => {
   const [data, setData] = useState<any>([]);
 
   useEffect(() => {

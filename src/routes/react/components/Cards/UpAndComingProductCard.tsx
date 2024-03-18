@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import React, { FC } from 'react';
+import { FC } from 'react';
 import cx from 'classnames';
 import styles from '../../../styles/Card.module.scss';
 type UpAndComingProductCardProps = {

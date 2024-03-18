@@ -3,7 +3,7 @@ import greenCircleIcon from '/public/assets/greenCircleIcon.svg';
 import redCircleIcon from '/public/assets/redCircleIcon.svg';
 import styles from '../../../styles/Card.module.scss';
 import cx from 'classnames';
-import React, { useState, FC } from 'react';
+import { useState, FC } from 'react';
 import { displayFloatPrice } from '../../../../utils/displayFloatPrice';
 
 interface ProductCardProps {

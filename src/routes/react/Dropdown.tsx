@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
 
-import React, { useState } from 'react';
+import { useState, FC } from 'react';
 import Link from 'next/link';
 import styles from '../styles/navbar.module.scss';
 import cx from 'classnames';
@@ -15,7 +15,7 @@ interface DropdownProps {
   currentItem: DropdownItem[];
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ currentItem }) => {
+const Dropdown: FC<DropdownProps> = ({ currentItem }) => {
   const [dropdown, setDropdown] = useState<boolean>(false);
 
   return (

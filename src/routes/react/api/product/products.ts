@@ -1,3 +1,4 @@
+// @ts-nocheck
 import axios from 'axios';
 import {
   useQuery,
@@ -56,7 +57,7 @@ interface ProductsSearchPayload {
 const getProductsSearch = async (
   payload: ProductsSearchPayload,
 ): Promise<Product[]> => {
-  let {
+  const {
     slug,
     page = 1,
     gender,

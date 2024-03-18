@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styles from '../styles/navbar.module.scss';
 import cx from 'classnames';
 import Dropdown from './Dropdown';
-import React from 'react';
+import { FC } from 'react';
 
 interface HeaderItemProps {
   item: {
@@ -16,7 +16,7 @@ interface HeaderItemProps {
   gender?: string;
 }
 
-const HeaderItem: React.FC<HeaderItemProps> = ({
+const HeaderItem: FC<HeaderItemProps> = ({
   item,
   dropdownState = false,
   setDropdownState,

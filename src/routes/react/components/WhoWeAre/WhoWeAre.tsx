@@ -1,8 +1,8 @@
 /** @jsxImportSource react */
-import React from 'react';
+import { FC } from 'react';
 import styles from '../../../styles/Home.module.scss';
 
-export const WhoWeAre: React.FC = () => (
+export const WhoWeAre: FC = () => (
   <section>
     <div className={styles['who-we-are']}>
       <p>

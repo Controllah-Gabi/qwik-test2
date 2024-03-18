@@ -3,7 +3,7 @@ import { dehydrate, QueryClient } from '@tanstack/react-query';
 import GridRowWith10Columns from '../Grid/GridRowWith10Columns';
 import GridRowWith10ColumnsSkeleton from '../Grid/GridRowWith10ColumnsSkeleton';
 import { GetStaticProps } from 'next';
-import React, { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import {
   getProductsSearch,
@@ -11,7 +11,7 @@ import {
 } from '../../api/product/products';
 import { getMostPopular } from '../../api/homepage/homepageMostPopular';
 
-const MostPopular: React.FC = () => {
+const MostPopular: FC = () => {
   // const { data, isLoading, refetch } = useGetProductsSearch({
   //   slug: 'most-popular',
   //   sort: '-popularity',

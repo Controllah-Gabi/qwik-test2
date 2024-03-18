@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
 import styles from '../../../styles/Card.module.scss';
 import cx from 'classnames';
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 const SkeletonProductCard: FC = () => {
   return (

@@ -15,7 +15,7 @@ export const generateProductDescription = (
     .trim()
     .replace(/[()]/g, '')
     .replace('&', '')
-    .replace(/[ \/]/g, '-');
+    .replace(/[ /]/g, '-');
 
   // Combine the cleaned name and colors into a URL-friendly product description
   const productDescription: string = `${cleanName}-${cleanColors}`;

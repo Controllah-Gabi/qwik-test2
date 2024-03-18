@@ -7,9 +7,9 @@ import {
   useGetLatestReleases,
 } from '../../api/homepage/homepageLatestReleases';
 
-import React, { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
-const LatestReleases: React.FC = () => {
+const LatestReleases: FC = () => {
   const [data, setData] = useState<any>([]);
 
   useEffect(() => {

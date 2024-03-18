@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
 import { qwikify$ } from '@builder.io/qwik-react';
-import React, { useContext, useEffect, useState } from 'react';
+import { useEffect, useState, FC } from 'react';
 import dynamic from 'next/dynamic';
 import styles from '../styles/Home.module.scss';
 // import { WhoWeAre } from './components/WhoWeAre';
@@ -39,7 +39,7 @@ const MostPopular = dynamic(() => import('./components/MostPopular'), {
   loading: () => <GridRowWith10ColumnsSkeleton />,
 });
 
-const Home: React.FC = () => {
+const Home: FC = () => {
   const [shouldLoadInstagram, setShouldLoadInstagram] = useState(false);
   const [shouldLoadLatestReleases, setShouldLoadLatestReleases] =
     useState(false);
@@ -52,7 +52,6 @@ const Home: React.FC = () => {
   const [shouldLoadMostPopular, setShouldLoadMostPopular] = useState(false);
   const [shouldWeLoadBlogPosts, setShouldLoadBlogPosts] = useState(false);
 
-  //   const mobile = useContext(IsMobileContext);
   const mobile = false;
 
   useEffect(() => {

@@ -1,11 +1,11 @@
 /** @jsxImportSource react */
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from '../../../styles/Grid.module.scss';
 import { getBrands, useGetBrands } from '../../api/homepage/brands';
 import GridRowWith10ColumnsSkeleton from '../Grid/GridRowWith10ColumnsSkeleton';
 
-const Brands: React.FC = () => {
+const Brands: FC = () => {
   const [data, setData] = useState<any>([]);
 
   useEffect(() => {

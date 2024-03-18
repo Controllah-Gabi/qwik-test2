@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import React from 'react';
+import { FC } from 'react';
 import SkeletonProductCard from '../Cards/SkeletonProductCard';
 import styles from '../../../styles/Grid.module.scss';
 
@@ -7,9 +7,9 @@ interface GridRowWith10ColumnsSkeletonProps {
   heading?: string;
 }
 
-const GridRowWith10ColumnsSkeleton: React.FC<
-  GridRowWith10ColumnsSkeletonProps
-> = ({ heading }) => {
+const GridRowWith10ColumnsSkeleton: FC<GridRowWith10ColumnsSkeletonProps> = ({
+  heading,
+}) => {
   const listNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (

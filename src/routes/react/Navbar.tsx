@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
 import { qwikify$ } from '@builder.io/qwik-react';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
 

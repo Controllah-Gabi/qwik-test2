@@ -1,8 +1,7 @@
 /** @jsxImportSource react */
-type SmoothScroll = (
-  scrollOffset: number,
-  ref: React.RefObject<HTMLElement>,
-) => void;
+import { RefObject } from 'react';
+
+type SmoothScroll = (scrollOffset: number, ref: RefObject<HTMLElement>) => void;
 
 export const smoothScroll: SmoothScroll = (scrollOffset, ref) => {
   if (!ref.current) {

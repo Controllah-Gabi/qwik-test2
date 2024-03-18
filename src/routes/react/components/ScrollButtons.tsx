@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import React, { RefObject } from 'react';
+import { FC, RefObject } from 'react';
 import chevronLeftIcon from '/public/assets/chevronLeftIcon.svg';
 import chevronRightIcon from '/public/assets/chevronRightIcon.svg';
 import { smoothScroll } from '../hooks/useSmoothScroll';
@@ -10,9 +10,7 @@ interface ScrollButtonProps {
   scrollRef: RefObject<HTMLDivElement>;
 }
 
-export const ScrollLeftButton: React.FC<ScrollButtonProps> = ({
-  scrollRef,
-}) => (
+export const ScrollLeftButton: FC<ScrollButtonProps> = ({ scrollRef }) => (
   <div className={styles['scroll-button__left']}>
     <button
       className={styles['scroll-button__left__button']}
@@ -30,9 +28,7 @@ export const ScrollLeftButton: React.FC<ScrollButtonProps> = ({
   </div>
 );
 
-export const ScrollRightButton: React.FC<ScrollButtonProps> = ({
-  scrollRef,
-}) => {
+export const ScrollRightButton: FC<ScrollButtonProps> = ({ scrollRef }) => {
   return (
     <div
       className={cx(styles['scroll-button__right'], {
@@ -57,7 +53,7 @@ export const ScrollRightButton: React.FC<ScrollButtonProps> = ({
   );
 };
 
-export const ScrollLeftRightButtons: React.FC<ScrollButtonProps> = ({
+export const ScrollLeftRightButtons: FC<ScrollButtonProps> = ({
   scrollRef,
 }) => (
   <>

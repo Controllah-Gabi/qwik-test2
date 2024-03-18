@@ -6,13 +6,13 @@ import Link from 'next/link';
 import OutfitCard from '../Cards/OutfitCard';
 import styles from '../../../styles/Grid.module.scss';
 import { ScrollLeftRightButtons } from '../ScrollButtons';
-import React, { useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 
 interface OutfitsRowProps {
   heading: string;
 }
 
-const OutfitsRow: React.FC<OutfitsRowProps> = ({ heading }) => {
+const OutfitsRow: FC<OutfitsRowProps> = ({ heading }) => {
   const [data, setData] = useState<any>([]);
 
   useEffect(() => {

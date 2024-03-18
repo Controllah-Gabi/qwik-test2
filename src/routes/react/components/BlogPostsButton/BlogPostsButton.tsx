@@ -1,8 +1,8 @@
 /** @jsxImportSource react */
-import React from 'react';
+import { FC } from 'react';
 import styles from '../../../styles/Home.module.scss';
 
-export const BlogPostsButton: React.FC = () => (
+export const BlogPostsButton: FC = () => (
   <section>
     <div className={styles['blog-posts']}>
       <a

@@ -3,7 +3,9 @@
 import searchIcon from '/public/assets/searchIcon.svg';
 import styles from '../styles/navbar.module.scss';
 
-const Search: React.FC = () => {
+import { FC } from 'react';
+
+const Search: FC = () => {
   // const { dispatch, isDesktopSearchOpen, desktopSearchClicked } =
   //   useSearchMenuClicked();
 
