@@ -2,12 +2,12 @@
  * This is the base config for vite.
  * When building, the adapter config is used which loads this file and extends it.
  */
-import { defineConfig, type UserConfig, loadEnv } from "vite";
-import { qwikVite } from "@builder.io/qwik/optimizer";
-import { qwikCity } from "@builder.io/qwik-city/vite";
-import tsconfigPaths from "vite-tsconfig-paths";
-import pkg from "./package.json";
-import { qwikReact } from "@builder.io/qwik-react/vite";
+import { defineConfig, type UserConfig, loadEnv } from 'vite';
+import { qwikVite } from '@builder.io/qwik/optimizer';
+import { qwikCity } from '@builder.io/qwik-city/vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import pkg from './package.json';
+import { qwikReact } from '@builder.io/qwik-react/vite';
 const { dependencies = {}, devDependencies = {} } = pkg as any as {
   dependencies: Record<string, string>;
   devDependencies: Record<string, string>;
@@ -22,9 +22,9 @@ export default defineConfig(({ command, mode }): UserConfig => {
   return {
     plugins: [qwikCity(), qwikVite(), tsconfigPaths(), qwikReact()],
     define: {
-      'process.env': env
+      'process.env': env,
     },
-    base: "./",
+    base: './',
     // This tells Vite which dependencies to pre-build in dev mode.
     optimizeDeps: {
       // Put problematic deps that break bundling here, mostly those with binaries.
@@ -33,7 +33,7 @@ export default defineConfig(({ command, mode }): UserConfig => {
     },
     // This tells Vite how to bundle the server code.
     ssr:
-      command === "build" && mode === "production"
+      command === 'build' && mode === 'production'
         ? {
             // All dev dependencies should be bundled in the server build
             noExternal: Object.keys(devDependencies),
@@ -48,13 +48,13 @@ export default defineConfig(({ command, mode }): UserConfig => {
     server: {
       headers: {
         // Don't cache the server response in dev mode
-        "Cache-Control": "public, max-age=0",
+        'Cache-Control': 'public, max-age=0',
       },
     },
     preview: {
       headers: {
         // Do cache the server response in preview (non-adapter production build)
-        "Cache-Control": "public, max-age=600",
+        'Cache-Control': 'public, max-age=600',
       },
     },
   };
