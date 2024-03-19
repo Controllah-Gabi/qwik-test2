@@ -24,7 +24,6 @@ export default defineConfig(({ command, mode }): UserConfig => {
     define: {
       'process.env': env,
     },
-    base: './',
     // This tells Vite which dependencies to pre-build in dev mode.
     optimizeDeps: {
       // Put problematic deps that break bundling here, mostly those with binaries.
@@ -50,12 +49,16 @@ export default defineConfig(({ command, mode }): UserConfig => {
         // Don't cache the server response in dev mode
         'Cache-Control': 'public, max-age=0',
       },
+      port: 3000,
     },
     preview: {
       headers: {
         // Do cache the server response in preview (non-adapter production build)
         'Cache-Control': 'public, max-age=600',
       },
+      host: true,
+      open: true,
+      port: 3000,
     },
   };
 });

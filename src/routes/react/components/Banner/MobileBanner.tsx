@@ -1,85 +1,45 @@
 /** @jsxImportSource react */
 import { useRef, useState } from 'react';
-import Navigation from 'swiper';
-import Pagination from 'swiper';
-import Scrollbar from 'swiper';
-import A11y from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+
 import 'swiper/css';
 import styles from '../../../styles/Banner.module.scss';
 import cx from 'classnames';
 import chevronLeftIcon from '/public/assets/chevronLeftIcon.svg';
 import chevronRightIcon from '/public/assets/chevronRightIcon.svg';
 import { SkeletonBanner } from './components/SkeletonBanner';
-import { useGetBanners } from '../../api/homepage/banner';
-import Link from 'next/link';
 
 const MobileBanner = () => {
   const [index, setIndex] = useState<number>(0);
   const swiperRefMobile = useRef<any>(null);
   const swiperRefDesktop = useRef<any>(null);
-  const { data, isLoading, refetch } = useGetBanners();
-
-  refetch();
+  const data = [
+    {
+      itemHref: 'test',
+      mobileImg: '/public/assets/banner1Mobile.png',
+      bannerName: 'test',
+    },
+  ];
 
   return (
     <section className={styles['banner']}>
-      <Swiper
+      <div
         data-cy="home-mobile__banner__slideshow__slider"
         className={cx(styles['banner__slideshow'], styles['mobile'])}
-        onSwiper={(swiper) => {
-          swiperRefMobile.current = swiper;
-        }}
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={1}
-        slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        onSlideChange={(e) => setIndex(e.activeIndex)}
+
+        // modules={[Navigation, Pagination, Scrollbar, A11y]}
+        // spaceBetween={1}
+        // slidesPerView={1}
+        // navigation
+        // pagination={{ clickable: true }}
+        // scrollbar={{ draggable: true }}
+        // onSlideChange={(e) => setIndex(e.activeIndex)}
       >
         <div
           className={cx(styles['banner__slideshow__slider'], styles['mobile'])}
         >
-          {isLoading ? (
-            <SkeletonBanner />
-          ) : (
-            data!.map((news, index) => (
-              <SwiperSlide key={index}>
-                <Link href={`/${news.itemHref}`}>
-                  <img
-                    {...(index === 0 && { priority: 'true' })}
-                    height={202}
-                    width={320}
-                    className={styles['banner__slideshow__slider__img']}
-                    src={news.mobileImg}
-                    alt={news.bannerName}
-                  />
-                </Link>
-              </SwiperSlide>
-            ))
-          )}
+          {<SkeletonBanner />}
         </div>
-        <div className={styles['banner__slideshow__slider__dots']}>
-          {isLoading
-            ? null
-            : data!.map((_, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    setIndex(idx);
-                    swiperRefMobile.current.slideTo(idx);
-                  }}
-                  className={cx(
-                    styles['banner__slideshow__slider__dots__dot'],
-                    {
-                      [styles['banner__slideshow__slider__dots__dot--active']]:
-                        index === idx,
-                    },
-                  )}
-                ></div>
-              ))}
-        </div>
+        <div className={styles['banner__slideshow__slider__dots']}></div>
 
         <div className={styles['banner__slideshow__navigation']}>
           <div
@@ -115,7 +75,7 @@ const MobileBanner = () => {
             >
               0{index + 1}
             </div>
-            <div>/ 0{isLoading ? null : data!.length}</div>
+            <div>/ 0</div>
           </div>
           <div
             className={cx(
@@ -143,7 +103,7 @@ const MobileBanner = () => {
             </button>
           </div>
         </div>
-      </Swiper>
+      </div>
     </section>
   );
 };

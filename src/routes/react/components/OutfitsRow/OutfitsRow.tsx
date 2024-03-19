@@ -2,7 +2,6 @@
 import { getOutfits, useGetOutfitsHomePage } from '../../api/outfit/outfits';
 
 import GridRowWith10ColumnsSkeleton from '../Grid/GridRowWith10ColumnsSkeleton';
-import Link from 'next/link';
 import OutfitCard from '../Cards/OutfitCard';
 import styles from '../../../styles/Grid.module.scss';
 import { ScrollLeftRightButtons } from '../ScrollButtons';
@@ -36,12 +35,12 @@ const OutfitsRow: FC<OutfitsRowProps> = ({ heading }) => {
           <div className={styles['product-row__container--position']}>
             <ScrollLeftRightButtons scrollRef={scrollRef} />
           </div>
-          <Link
+          <a
             href={`/outfits?gender=men`}
             className={styles['product-row__container__recommended']}
           >
             View All
-          </Link>
+          </a>
         </div>
       </div>
       <div
@@ -51,7 +50,7 @@ const OutfitsRow: FC<OutfitsRowProps> = ({ heading }) => {
       >
         {data.outfits?.map((item: any, index: any) => {
           return (
-            <Link
+            <a
               href={`/outfits/${item._id}`}
               data-cy="product-card"
               className={styles['product-row__container__vessel__card']}
@@ -67,7 +66,7 @@ const OutfitsRow: FC<OutfitsRowProps> = ({ heading }) => {
                 inStock={item.inStock}
                 src={item.mainImage}
               />
-            </Link>
+            </a>
           );
         })}
       </div>

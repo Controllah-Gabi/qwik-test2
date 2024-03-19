@@ -1,10 +1,4 @@
 import axios from 'axios';
-import {
-  useInfiniteQuery,
-  useQuery,
-  UseQueryResult,
-  UseInfiniteQueryResult,
-} from '@tanstack/react-query';
 
 const baseURL = import.meta.env.PUBLIC_API_URL;
 
@@ -75,42 +69,42 @@ const getBlogPostById = async (id: string): Promise<BlogPost> => {
   return response.data.data.data;
 };
 
-const useGetBlogPosts = (
-  payload: BlogPostPayload,
-): UseInfiniteQueryResult<BlogPost[]> => {
-  return useInfiniteQuery(
-    ['blogpost', payload],
-    ({ pageParam = 1 }) => getBlogPosts({ ...payload, page: pageParam }),
-    // @ts-ignore
-    {
-      getNextPageParam: (lastPage: any, pages: any) => {
-        if (lastPage.length < 10) return undefined;
-        return pages.length + 1;
-      },
-    },
-  );
-};
+// const useGetBlogPosts = (
+//   payload: BlogPostPayload,
+// ): UseInfiniteQueryResult<BlogPost[]> => {
+//   return useInfiniteQuery(
+//     ['blogpost', payload],
+//     ({ pageParam = 1 }) => getBlogPosts({ ...payload, page: pageParam }),
+//     // @ts-ignore
+//     {
+//       getNextPageParam: (lastPage: any, pages: any) => {
+//         if (lastPage.length < 10) return undefined;
+//         return pages.length + 1;
+//       },
+//     },
+//   );
+// };
 
-const useGetBlogPostById = (id: string): UseQueryResult<BlogPost> => {
-  return useQuery({
-    queryKey: ['blogpost', id],
-    queryFn: () => getBlogPostById(id),
-    enabled: !!id,
-  });
-};
+// const useGetBlogPostById = (id: string): UseQueryResult<BlogPost> => {
+//   return useQuery({
+//     queryKey: ['blogpost', id],
+//     queryFn: () => getBlogPostById(id),
+//     enabled: !!id,
+//   });
+// };
 
-const useGetBlogPostsHomePage = (): UseQueryResult<BlogPost[]> => {
-  return useQuery({
-    queryKey: ['blogpost?limit=10'],
-    queryFn: getBlogPostsHomePage,
-  });
-};
+// const useGetBlogPostsHomePage = (): UseQueryResult<BlogPost[]> => {
+//   return useQuery({
+//     queryKey: ['blogpost?limit=10'],
+//     queryFn: getBlogPostsHomePage,
+//   });
+// };
 
 export {
   getBlogPosts,
   getBlogPostById,
-  useGetBlogPosts,
-  useGetBlogPostById,
-  useGetBlogPostsHomePage,
+  // useGetBlogPosts,
+  // useGetBlogPostById,
+  // useGetBlogPostsHomePage,
   getBlogPostsHomePage,
 };

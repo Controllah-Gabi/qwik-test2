@@ -1,7 +1,6 @@
 /** @jsxImportSource react */
 import { qwikify$ } from '@builder.io/qwik-react';
 import { useEffect, useState, FC } from 'react';
-import dynamic from 'next/dynamic';
 import styles from '../styles/Home.module.scss';
 // import { WhoWeAre } from './components/WhoWeAre';
 import GridRowWith10ColumnsSkeleton from './components/Grid/GridRowWith10ColumnsSkeleton';

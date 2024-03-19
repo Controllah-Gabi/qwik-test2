@@ -1,18 +1,17 @@
 /** @jsxImportSource react */
 import { useEffect, useRef, useState } from 'react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import SwiperCore from 'swiper';
+
 // import Navigation from 'swiper';
 // import Pagination from 'swiper';
 // import Scrollbar from 'swiper';
 // import A11y from 'swiper';
-import 'swiper/css';
+
 import styles from '../../../styles/Banner.module.scss';
 import cx from 'classnames';
 import chevronLeftIcon from '/public/assets/chevronLeftIcon.svg';
 import chevronRightIcon from '/public/assets/chevronRightIcon.svg';
 import { SkeletonBanner } from './components/SkeletonBanner';
-import { useGetBanners, getBanners } from '../../api/homepage/banner';
+import { getBanners } from '../../api/homepage/banner';
 
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 const Banner = () => {

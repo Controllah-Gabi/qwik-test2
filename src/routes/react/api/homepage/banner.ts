@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
 const baseURL = import.meta.env.PUBLIC_API_URL;
 
@@ -31,11 +30,14 @@ const getBanners = async (): Promise<Banner[]> => {
   return response.data.data.data;
 };
 
-const useGetBanners = (): UseQueryResult<Banner[]> => {
-  return useQuery({
-    queryKey: ['banners'],
-    queryFn: getBanners,
-  });
-};
+// const useGetBanners = (): UseQueryResult<Banner[]> => {
+//   return useQuery({
+//     queryKey: ['banners'],
+//     queryFn: getBanners,
+//   });
+// };
 
-export { useGetBanners, getBanners };
+export {
+  // useGetBanners,
+  getBanners,
+};

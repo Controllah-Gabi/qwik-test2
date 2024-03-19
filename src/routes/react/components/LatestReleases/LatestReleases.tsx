@@ -2,10 +2,7 @@
 
 import GridRowWith10Columns from '../Grid/GridRowWith10Columns';
 import GridRowWith10ColumnsSkeleton from '../Grid/GridRowWith10ColumnsSkeleton';
-import {
-  getLatestReleases,
-  useGetLatestReleases,
-} from '../../api/homepage/homepageLatestReleases';
+import { getLatestReleases } from '../../api/homepage/homepageLatestReleases';
 
 import { FC, useEffect, useState } from 'react';
 

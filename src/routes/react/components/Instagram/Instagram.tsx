@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
 import { FC, useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
-import { AiOutlineInstagram, AiOutlineShopping } from 'react-icons/ai';
+
 import { getInstagram, useGetInstagram } from '../../api/homepage/instagram';
 import GridRowWith10ColumnsSkeleton from '../Grid/GridRowWith10ColumnsSkeleton';
 
@@ -107,10 +107,10 @@ const Popular: FC<PopularProps> = ({ heading }) => {
                     ]
                   }
                 >
-                  <AiOutlineShopping className={styles['shopping-icon']} />
+                  {/* <AiOutlineShopping className={styles['shopping-icon']} /> */}
                   <span>View Items</span>
                 </div>
-                <AiOutlineInstagram className={styles['instagram-icon']} />
+                {/* <AiOutlineInstagram className={styles['instagram-icon']} /> */}
               </div>
             </div>
           ))}

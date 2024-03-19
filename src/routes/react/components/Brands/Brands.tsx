@@ -1,8 +1,8 @@
 /** @jsxImportSource react */
-import Link from 'next/link';
+
 import { FC, useEffect, useState } from 'react';
 import styles from '../../../styles/Grid.module.scss';
-import { getBrands, useGetBrands } from '../../api/homepage/brands';
+import { getBrands } from '../../api/homepage/brands';
 import GridRowWith10ColumnsSkeleton from '../Grid/GridRowWith10ColumnsSkeleton';
 
 const Brands: FC = () => {
@@ -27,7 +27,7 @@ const Brands: FC = () => {
         className={styles['product-row__container__brand']}
       >
         {data.map((element: any, index: any) => (
-          <Link
+          <a
             data-cy="home-desktop__brands__container__brand"
             href={element.brandHref + `?gender=${selectedGender}`}
             key={index}
@@ -72,7 +72,7 @@ const Brands: FC = () => {
                 </div>
               </article>
             </div>
-          </Link>
+          </a>
         ))}
       </div>
     </section>

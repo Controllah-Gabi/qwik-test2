@@ -1,8 +1,6 @@
 /** @jsxImportSource react */
-import { dehydrate, QueryClient } from '@tanstack/react-query';
 import GridRowWith10Columns from '../Grid/GridRowWith10Columns';
 import GridRowWith10ColumnsSkeleton from '../Grid/GridRowWith10ColumnsSkeleton';
-import { GetStaticProps } from 'next';
 import { FC, useEffect, useState } from 'react';
 
 import {
@@ -27,8 +25,6 @@ const MostPopular: FC = () => {
     };
     fetchData();
   }, []);
-
-  console.log(data);
   if (data[0] === undefined) {
     return <GridRowWith10ColumnsSkeleton heading="Most Popular" />;
   }

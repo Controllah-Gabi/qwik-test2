@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
 const baseURL = import.meta.env.PUBLIC_API_URL;
 
@@ -33,11 +32,14 @@ const getLatestReleases = async (): Promise<Product[]> => {
   return response.data.data.data;
 };
 
-const useGetLatestReleases = (): UseQueryResult<Product[]> => {
-  return useQuery({
-    queryKey: ['latest_releases'],
-    queryFn: () => getLatestReleases(),
-  });
-};
+// const useGetLatestReleases = (): UseQueryResult<Product[]> => {
+//   return useQuery({
+//     queryKey: ['latest_releases'],
+//     queryFn: () => getLatestReleases(),
+//   });
+// };
 
-export { getLatestReleases, useGetLatestReleases };
+export {
+  getLatestReleases,
+  // useGetLatestReleases
+};

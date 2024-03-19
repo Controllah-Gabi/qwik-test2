@@ -1,6 +1,5 @@
 /** @jsxImportSource react */
 import { useRef } from 'react';
-import a from 'next/link';
 import ProductCard from '../Cards/ProductCard';
 import { ScrollLeftButton, ScrollRightButton } from '../ScrollButtons';
 import UpAndComingProductCard from '../Cards/UpAndComingProductCard';

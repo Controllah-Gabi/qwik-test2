@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import Image from 'next/image';
+
 import greenCircleIcon from '/public/assets/greenCircleIcon.svg';
 import redCircleIcon from '/public/assets/redCircleIcon.svg';
 import styles from '../../../styles/Card.module.scss';
@@ -28,14 +28,13 @@ const OutfitCard: FC<OutfitCardProps> = ({
   src,
   colour,
 }) => {
-  const [isImageLoading, setIsImageLoading] = useState(true);
+  const [isImageLoading, setIsImageLoading] = useState(false);
 
   return (
     <article className={styles['product-card']}>
       <div className={styles['product-card__container']}>
         <div className={styles['product-card__container__outfit-image']}>
-          <Image
-            quality={20}
+          <img
             width={264}
             height={264}
             src={src}
@@ -43,7 +42,6 @@ const OutfitCard: FC<OutfitCardProps> = ({
             className={cx(
               isImageLoading ? styles['opacity-0'] : styles['transition-op'],
             )}
-            onLoadingComplete={() => setIsImageLoading(false)}
           />
         </div>
       </div>
@@ -107,8 +105,9 @@ const OutfitCard: FC<OutfitCardProps> = ({
                     </span>{' '}
                   </>
                 )}
-                <Image
-                  quality={20}
+                <img
+                  width={20}
+                  height={20}
                   src={inStock ? greenCircleIcon : redCircleIcon}
                   alt={inStock ? 'In Stock' : 'Sold Out'}
                   className={

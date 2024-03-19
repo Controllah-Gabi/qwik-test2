@@ -1,6 +1,5 @@
 /** @jsxImportSource react */
 
-import a from 'next/link';
 import styles from '../styles/navbar.module.scss';
 import cx from 'classnames';
 import Dropdown from './Dropdown';
