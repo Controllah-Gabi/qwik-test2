@@ -1,8 +1,8 @@
 /** @jsxImportSource react */
-import { FC } from 'react';
+import { qwikify$ } from '@builder.io/qwik-react';
 import styles from '../../../styles/Home.module.scss';
 
-export const WhoWeAre: FC = () => (
+export const WhoWeAre = () => (
   <section>
     <div className={styles['who-we-are']}>
       <p>
@@ -14,4 +14,4 @@ export const WhoWeAre: FC = () => (
   </section>
 );
 
-export default WhoWeAre;
+export const QWhoWeAre = qwikify$(WhoWeAre, { eagerness: 'visible' });

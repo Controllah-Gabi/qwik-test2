@@ -36,7 +36,6 @@ const GridRowWith10Columns = ({
   data,
 }: GridRowWith10ColumnsProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  console.log(data, heading);
   return (
     <section>
       <div className={styles['product-row__container']}>

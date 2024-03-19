@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
 import { useEffect, useRef, useState } from 'react';
-
+import { qwikify$ } from '@builder.io/qwik-react';
 // import Navigation from 'swiper';
 // import Pagination from 'swiper';
 // import Scrollbar from 'swiper';
@@ -28,7 +28,7 @@ const Banner = () => {
     fetchData();
   }, []);
 
-  return (
+  return data[0] ? (
     <section className={styles['banner']}>
       <div
         data-cy="home-desktop__banner__slideshow__slider"
@@ -37,20 +37,20 @@ const Banner = () => {
         <div
           className={cx(styles['banner__slideshow__slider'], styles['desktop'])}
         >
-          {data?.map((news: any, index: any) => (
-            <div key={index}>
-              <a href={`/${news.itemHref}`}>
-                <img
-                  {...(index === 0 && { priority: 'true' })}
-                  height={475}
-                  width={1500}
-                  className={styles['banner__slideshow__slider__img']}
-                  src={news.desktopImg}
-                  alt={news.bannerName}
-                />
-              </a>
-            </div>
-          ))}
+          {/* {data?.map((news: any, index: any) => ( */}
+          <div key={index}>
+            <a href={`/${data[0].itemHref}`}>
+              <img
+                {...(index === 0 && { priority: 'true' })}
+                height={475}
+                width={1500}
+                className={styles['banner__slideshow__slider__img']}
+                src={data[0].desktopImg}
+                alt={data[0].bannerName}
+              />
+            </a>
+          </div>
+          {/* ))} */}
         </div>
 
         <div className={styles['banner__slideshow__navigation']}>
@@ -117,7 +117,9 @@ const Banner = () => {
         </div>
       </div>
     </section>
+  ) : (
+    <SkeletonBanner />
   );
 };
 
-export default Banner;
+export const QBanner = qwikify$(Banner, { eagerness: 'visible' });

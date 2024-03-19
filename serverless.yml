@@ -1,3 +1,5 @@
+org: hartthomas
+app: qwik-lambda-app
 service: qwik-lambda-app
 frameworkVersion: "3"
 

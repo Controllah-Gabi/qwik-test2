@@ -7,6 +7,7 @@ import {
 } from '../../api/homepage/homepageRecommended';
 import GridRowWith10Columns from '../../components/Grid/GridRowWith10Columns';
 import { useEffect, useState } from 'react';
+import { qwikify$ } from '@builder.io/qwik-react';
 
 const Recommended = () => {
   const [data, setData] = useState<any>([]);
@@ -26,4 +27,4 @@ const Recommended = () => {
   return <GridRowWith10Columns heading="For You" data={data} />;
 };
 
-export default Recommended;
+export const QRecommended = qwikify$(Recommended, { eagerness: 'visible' });

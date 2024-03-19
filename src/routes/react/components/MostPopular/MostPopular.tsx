@@ -2,6 +2,7 @@
 import GridRowWith10Columns from '../Grid/GridRowWith10Columns';
 import GridRowWith10ColumnsSkeleton from '../Grid/GridRowWith10ColumnsSkeleton';
 import { FC, useEffect, useState } from 'react';
+import { qwikify$ } from '@builder.io/qwik-react';
 
 import {
   getProductsSearch,
@@ -9,7 +10,7 @@ import {
 } from '../../api/product/products';
 import { getMostPopular } from '../../api/homepage/homepageMostPopular';
 
-const MostPopular: FC = () => {
+const MostPopular = () => {
   // const { data, isLoading, refetch } = useGetProductsSearch({
   //   slug: 'most-popular',
   //   sort: '-popularity',
@@ -40,4 +41,4 @@ const MostPopular: FC = () => {
   );
 };
 
-export default MostPopular;
+export const QMostPopular = qwikify$(MostPopular, { eagerness: 'visible' });
