@@ -14,21 +14,21 @@ import { SkeletonBanner } from './components/SkeletonBanner';
 import { getBanners } from '../../api/homepage/banner';
 
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
-const Banner = () => {
+const Banner = ({ data }) => {
   const [index, setIndex] = useState<number>(0);
   const swiperRefMobile = useRef<any>(null);
   const swiperRefDesktop = useRef<any>(null);
-  const [data, setData] = useState<any>([]);
+  // const [data, setData] = useState<any>([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getBanners();
-      setData(response);
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await getBanners();
+  //     setData(response);
+  //   };
+  //   fetchData();
+  // }, []);
 
-  return data[0] ? (
+  return data.value[0] ? (
     <section className={styles['banner']}>
       <div
         data-cy="home-desktop__banner__slideshow__slider"
@@ -39,14 +39,14 @@ const Banner = () => {
         >
           {/* {data?.map((news: any, index: any) => ( */}
           <div key={index}>
-            <a href={`/${data[0].itemHref}`}>
+            <a href={`/${data.value[0].itemHref}`}>
               <img
-                {...(index === 0 && { priority: 'true' })}
+                {...(index === 0 && { loading: 'eager' })}
                 height={475}
                 width={1500}
                 className={styles['banner__slideshow__slider__img']}
-                src={data[0].desktopImg}
-                alt={data[0].bannerName}
+                src={data.value[0].desktopImg}
+                alt={data.value[0].bannerName}
               />
             </a>
           </div>

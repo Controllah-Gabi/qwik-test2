@@ -4,7 +4,7 @@ import { QRecommended } from './react/components/Recommended/Recommended';
 import { QMostPopular } from './react/components/MostPopular/MostPopular';
 import { QWhoWeAre } from './react/components/WhoWeAre/WhoWeAre';
 
-const Home$ = () => {
+const Home$ = ({ bannerData, mostPopularData, recommendedData }) => {
   const mobile = false;
 
   // useEffect(() => {
@@ -44,11 +44,11 @@ const Home$ = () => {
 
   return (
     <div class={styles['home']}>
-      <QBanner />
+      <QBanner data={bannerData} />
 
-      <QRecommended />
+      <QRecommended data={recommendedData} />
 
-      <QMostPopular />
+      <QMostPopular data={mostPopularData} />
 
       {/* {shouldLoadInstagram && <Instagram heading="Instagram" />}
 

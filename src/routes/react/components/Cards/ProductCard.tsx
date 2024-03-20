@@ -29,13 +29,14 @@ const ProductCard: FC<ProductCardProps> = ({
   coloursShown,
   index,
 }) => {
-  const [isimgLoading, setIsimgLoading] = useState(true);
+  const [isimgLoading, setIsimgLoading] = useState(false);
+
   return (
     <article className={styles['product-card']}>
       <div className={styles['product-card__container']}>
         <div className={styles['product-card__container__img']}>
           <img
-            {...(index! < 4 && { priority: 'true' })}
+            {...(index! < 4 && { loading: 'eager' })}
             key={index}
             width={290}
             height={360}

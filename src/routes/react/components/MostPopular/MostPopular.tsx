@@ -10,23 +10,23 @@ import {
 } from '../../api/product/products';
 import { getMostPopular } from '../../api/homepage/homepageMostPopular';
 
-const MostPopular = () => {
+const MostPopular = ({ data }) => {
   // const { data, isLoading, refetch } = useGetProductsSearch({
   //   slug: 'most-popular',
   //   sort: '-popularity',
   //   gender: 'men',
   //   limit: 10,
   // });
-  const [data, setData] = useState<any>([]);
+  // const [data, setData] = useState<any>([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getMostPopular();
-      setData(response);
-    };
-    fetchData();
-  }, []);
-  if (data[0] === undefined) {
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await getMostPopular();
+  //     setData(response);
+  //   };
+  //   fetchData();
+  // }, []);
+  if (data.value[0] === undefined) {
     return <GridRowWith10ColumnsSkeleton heading="Most Popular" />;
   }
 
@@ -34,7 +34,7 @@ const MostPopular = () => {
     <GridRowWith10Columns
       heading="Most Popular"
       // @ts-ignore
-      data={data}
+      data={data.value}
       more="View All"
       href={`/most-popular?gender=men&sort=-popularity`}
     />
