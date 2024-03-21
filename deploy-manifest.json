@@ -39,8 +39,8 @@
   "computeResources": [
     {
       "name": "default",
-      "runtime": "nodejs18.x",
-      "entrypoint": "server/entry.express"
+      "runtime": "nodejs20.x",
+      "entrypoint": "server/entry.express.js"
     }
   ]
 }
